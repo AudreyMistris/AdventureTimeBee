@@ -28,17 +28,21 @@
     <img src="bee.gif" alt="Abelha">
     
     <script>
-        let x = 50;
-        let y = 0;
+        let x = 0;
+        let baseY = Math.random() * 300;
+        let y = baseY;
         let abelhaEl = document.querySelector('img');
 
         //abelhaEl.style.left = x + 'px';
         setInterval(() => {
             x += 3;
+            y = baseY + Math.cos(x);
+            
             if (x >= window.innerWidth) {
                 x = -5;
+                y = Math.random() * 300;
             }
-            abelhaEl.style.transform = 'translateX(' + x + 'px)';
+            abelhaEl.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
         }, 23);
 
     </script>
