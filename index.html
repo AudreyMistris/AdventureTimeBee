@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Finn e Jake observando abelhas à noite">
     <title>Abelhas de Hora da Aventura</title>
+    
     <style>
         body {
             background-image: url(adventuretime.jpg);
@@ -15,6 +16,8 @@
 
         img {
             position: absolute;
+            top: 50px;
+            left: 250px;
             height: 28px;
             width: 28px;
         }
@@ -23,7 +26,17 @@
 
 <body>
     <img src="bee.gif" alt="Abelha">
+    
+    <script>
+        let x = 50;
+        let abelhaEl = document.querySelector('img');
 
+        abelhaEl.style.left = x + 'px';
+        for (x = 50; x < 500; x++) {
+            abelhaEl.style.left = x + 'px';
+        }
+
+    </script>
 </body>
 
 </html>
