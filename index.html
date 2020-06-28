@@ -18,8 +18,8 @@
             position: absolute;
             top: 50px;
             left: 250px;
-            height: 28px;
-            width: 28px;
+            height: 56px;
+            width: 56px;
         }
     </style>
 </head>
@@ -29,12 +29,14 @@
     
     <script>
         let x = 50;
+        let y = 0;
         let abelhaEl = document.querySelector('img');
 
-        abelhaEl.style.left = x + 'px';
-        for (x = 50; x < 500; x++) {
+        //abelhaEl.style.left = x + 'px';
+        setInterval(() => {
+            x++;
             abelhaEl.style.left = x + 'px';
-        }
+        }, 23);
 
     </script>
 </body>
