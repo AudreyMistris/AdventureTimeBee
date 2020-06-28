@@ -16,8 +16,8 @@
 
         img {
             position: absolute;
-            top: 50px;
-            left: 250px;
+            /*top: 50px;
+            left: 250px;*/
             height: 56px;
             width: 56px;
         }
@@ -34,8 +34,11 @@
 
         //abelhaEl.style.left = x + 'px';
         setInterval(() => {
-            x++;
-            abelhaEl.style.left = x + 'px';
+            x += 3;
+            if (x >= window.innerWidth) {
+                x = -5;
+            }
+            abelhaEl.style.transform = 'translateX(' + x + 'px)';
         }, 23);
 
     </script>
