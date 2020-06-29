@@ -16,8 +16,6 @@
 
         img {
             position: absolute;
-            /*top: 50px;
-            left: 250px;*/
             height: 56px;
             width: 56px;
         }
@@ -25,25 +23,53 @@
 </head>
 
 <body>
-    <img src="bee.gif" alt="Abelha">
+    <div id="abelhas"></div>
+    <button id="novo">Nova abelha</button>
+    <!-- <img src="bee.gif" alt="Abelha"> -->
     
     <script>
-        let x = 0;
-        let baseY = Math.random() * 300;
-        let y = baseY;
-        let abelhaEl = document.querySelector('img');
-
-        //abelhaEl.style.left = x + 'px';
-        setInterval(() => {
-            x += 2;
-            y = baseY + Math.sin(x / 12) * 29 + Math.cos(Math.sqrt(3) * (x / 19)) * 28;
-            
-            if (x >= window.innerWidth) {
-                x = -10;
-                baseY = Math.random() * 300;
+        class Abelha {
+            constructor() {
+                this.x = 0;
+                this.y = 0;
+                this.baseY = Math.random() * 300;
+                this.el = document.createElement('img');
+                this.el.src = 'bee.gif';
+                this.el.alt = 'Abelha';
+                document.querySelector('#abelhas').appendChild(this.el);
             }
-            abelhaEl.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+
+            movimentar() {
+                this.x += 2;
+                this.y = this.baseY + Math.sin(this.x / 12) * 29 + Math.cos(Math.sqrt(3) * (this.x / 19)) * 28;
+
+                if (this.x >= window.innerWidth) {
+                    this.x = -10;
+                    this.baseY = Math.random() * 300;
+                }
+
+                this.el.style.transform = 'translate(' + this.x + 'px, ' + this.y + 'px)';
+            }
+        }
+        
+        // Iniciar apenas com uma abelha
+        let abelhas = [new Abelha()];
+
+        // let x = 0;
+        // let baseY = Math.random() * 300;
+        // let y = baseY;
+        // let abelhaEl = document.querySelector('img');
+
+        setInterval(() => {
+            for (let i = 0; i < abelhas.length; i++) {
+                abelhas[i].movimentar();
+            }
         }, 23);
+        
+        let novoEl = document.querySelector('#novo');
+        novoEl.addEventListener('click', function() {
+            abelhas.push(new Abelha());
+        });
 
     </script>
 </body>
