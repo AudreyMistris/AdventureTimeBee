@@ -6,14 +6,21 @@
     <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Finn e Jake observando abelhas à noite">
-    <title>Abelhas de Hora de Aventura</title>
+    <meta name="description" content="Come along with me and the butterflies and bees">
+    <title>Abelhas de Adventure Time</title>
     
     <style>
+        html,
+        body {
+            min-height: 100vh;
+        }
+        
         body {
             background-image: url(adventuretime.jpg);
             background-size: cover;
             background-repeat: no-repeat;
+            background-position: right bottom;
+            overflow: hidden;
         }
 
         img {
@@ -28,7 +35,7 @@
     <div id="abelhas">
     </div>
     
-    <button id="novo">Adicionar abelha</button>
+    <center><button id="novo"><b>Adicionar abelha</b></button></center>
     
     <script>
         var audio = new Audio('islandsong.mp3');
