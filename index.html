@@ -23,16 +23,17 @@
 </head>
 
 <body>
-    <div id="abelhas"></div>
-    <button id="novo">Nova abelha</button>
-    <!-- <img src="bee.gif" alt="Abelha"> -->
+    <div id="abelhas">
+    </div>
+    
+    <button id="novo">Adicionar abelha</button>
     
     <script>
         class Abelha {
             constructor() {
                 this.x = 0;
                 this.y = 0;
-                this.baseY = Math.random() * 300;
+                this.baseY = Math.random() * 555;
                 this.el = document.createElement('img');
                 this.el.src = 'bee.gif';
                 this.el.alt = 'Abelha';
@@ -45,20 +46,16 @@
 
                 if (this.x >= window.innerWidth) {
                     this.x = -10;
-                    this.baseY = Math.random() * 300;
+                    this.baseY = Math.random() * 555;
                 }
 
-                this.el.style.transform = 'translate(' + this.x + 'px, ' + this.y + 'px)';
+                //this.el.style.transform = 'translate(' + this.x + 'px, ' + this.y + 'px)';
+                this.el.style.transform = `translate(${this.x}px, ${this.y}px)`;
             }
         }
         
-        // Iniciar apenas com uma abelha
-        let abelhas = [new Abelha()];
-
-        // let x = 0;
-        // let baseY = Math.random() * 300;
-        // let y = baseY;
-        // let abelhaEl = document.querySelector('img');
+        // Iniciar apenas com uma abelha?
+        let abelhas = [new Abelha(), new Abelha(), new Abelha()];
 
         setInterval(() => {
             for (let i = 0; i < abelhas.length; i++) {
@@ -67,7 +64,7 @@
         }, 23);
         
         let novoEl = document.querySelector('#novo');
-        novoEl.addEventListener('click', function() {
+        novoEl.addEventListener('click', () => {
             abelhas.push(new Abelha());
         });
 
