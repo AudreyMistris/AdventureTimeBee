@@ -35,12 +35,12 @@
 
         //abelhaEl.style.left = x + 'px';
         setInterval(() => {
-            x += 3;
-            y = baseY + Math.cos(x / 30) * 28;
+            x += 2;
+            y = baseY + Math.sin(x / 12) * 29 + Math.cos(Math.sqrt(3) * (x / 19)) * 28;
             
             if (x >= window.innerWidth) {
                 x = -10;
-                y = Math.random() * 300;
+                baseY = Math.random() * 300;
             }
             abelhaEl.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
         }, 23);
