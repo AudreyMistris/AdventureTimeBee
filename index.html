@@ -27,6 +27,7 @@
             position: absolute;
             height: 56px;
             width: 56px;
+            z-index: 2;
         }
         
         button {
@@ -41,11 +42,21 @@
             cursor: pointer;
             font-size: 16px;
             font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            z-index: 1;
         }
 
         button:active {
             background-color: rgb(0, 100, 100);
             transform: translateY(3px);
+            z-index: 1;
+        }
+        
+        #snail {
+            bottom: 55px;
+            right: 10px;
+            height: 48px;
+            width: 36px;
+            z-index: 1;
         }
     </style>
 </head>
@@ -54,13 +65,16 @@
     <div id="abelhas">
     </div>
     
-    <center><button id="novo"><b>Adicionar abelha</b></button></center>
+    <center><button id="novo">Adicionar abelha</button></center>
+    
+    <img id="snail" src="snail.gif" alt="The Snail">
     
     <script>
         //Se o áudio não funcionar automaticamente, fazer "right click" > "Atualizar frame"
         var audio = new Audio('islandsong.mp3');
         audio.load();
         audio.play();
+        audio.loop = true;
         
         class Abelha {
             constructor() {
