@@ -28,6 +28,25 @@
             height: 56px;
             width: 56px;
         }
+        
+        button {
+            background-color: rgb(0, 128, 128);
+            border: none;
+            border-radius: 6px;
+            color: rgb(248, 248, 255);
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            font-size: 16px;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        button:active {
+            background-color: rgb(0, 100, 100);
+            transform: translateY(3px);
+        }
     </style>
 </head>
 
@@ -38,6 +57,7 @@
     <center><button id="novo"><b>Adicionar abelha</b></button></center>
     
     <script>
+        //Se o áudio não funcionar automaticamente, fazer "right click" > "Atualizar frame"
         var audio = new Audio('islandsong.mp3');
         audio.load();
         audio.play();
@@ -48,13 +68,13 @@
                 this.y = 0;
                 this.baseY = Math.random() * 555;
                 this.velocidadeX = Math.random() * Math.PI + 1;
-                this.el = document.createElement('img');
-                this.el.src = 'bee.gif';
-                this.el.alt = 'Abelha';
-                document.querySelector('#abelhas').appendChild(this.el);
+                this.bee = document.createElement('img');
+                this.bee.src = 'bee.gif';
+                this.bee.alt = 'Abelha';
+                document.querySelector('#abelhas').appendChild(this.bee);
             }
 
-            movimentar() {
+            voar() {
                 this.x += this.velocidadeX;
                 this.y = this.baseY + Math.sin(this.x / 12) * 29 + Math.cos(Math.sqrt(3) * (this.x / 19)) * 28;
 
@@ -63,22 +83,22 @@
                     this.baseY = Math.random() * 555;
                 }
 
-                this.el.style.transform = 'translate(' + this.x + 'px, ' + this.y + 'px)';
-                //this.el.style.transform = `translate(${this.x}px, ${this.y}px)`;
+                this.bee.style.transform = 'translate(' + this.x + 'px, ' + this.y + 'px)';
+                //this.bee.style.transform = `translate(${this.x}px, ${this.y}px)`;
             }
         }
         
-        // Iniciar apenas com uma abelha
+        // Iniciar com apenas uma abelha
         let abelhas = [new Abelha()];
 
         setInterval(() => {
             for (let i = 0; i < abelhas.length; i++) {
-                abelhas[i].movimentar();
+                abelhas[i].voar();
             }
         }, 23);
         
-        let novoEl = document.querySelector('#novo');
-        novoEl.addEventListener('click', () => {
+        let newBee = document.querySelector('#novo');
+        newBee.addEventListener('click', () => {
             abelhas.push(new Abelha());
         });
 
