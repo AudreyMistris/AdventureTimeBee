@@ -47,6 +47,7 @@
                 this.x = 0;
                 this.y = 0;
                 this.baseY = Math.random() * 555;
+                this.velocidadeX = Math.random() * Math.PI + 1;
                 this.el = document.createElement('img');
                 this.el.src = 'bee.gif';
                 this.el.alt = 'Abelha';
@@ -54,7 +55,7 @@
             }
 
             movimentar() {
-                this.x += 2;
+                this.x += this.velocidadeX;
                 this.y = this.baseY + Math.sin(this.x / 12) * 29 + Math.cos(Math.sqrt(3) * (this.x / 19)) * 28;
 
                 if (this.x >= window.innerWidth) {
